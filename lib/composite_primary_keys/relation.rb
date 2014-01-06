@@ -6,8 +6,8 @@ module ActiveRecord
         include CompositePrimaryKeys::ActiveRecord::Calculations
         include CompositePrimaryKeys::ActiveRecord::FinderMethods
         include CompositePrimaryKeys::ActiveRecord::QueryMethods
-        
-        
+
+
         def delete(id_or_array)
           # Without CPK:
           # where(primary_key => id_or_array).delete_all
@@ -47,6 +47,8 @@ module ActiveRecord
     end
 
     def add_cpk_where_values_hash
+      return
+
       class << self
         def where_values_hash
           # CPK adds this so that it finds the Equality nodes beneath the And node:
